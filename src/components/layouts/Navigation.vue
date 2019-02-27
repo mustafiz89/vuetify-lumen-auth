@@ -1,5 +1,5 @@
 <template>
- <v-navigation-drawer permanent>
+ <v-navigation-drawer>
     <v-list>
       <v-list-tile>
         <v-list-tile-action>
@@ -29,25 +29,27 @@
       </v-list-group>
     </v-list>
   </v-navigation-drawer>
-
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Navigation',
   props: {
     msg: String
   },
   data () {
       return {
+        mini: true,
+        drawer: true,
+        right: null,
         items: [
           {
             action: 'people',
             title: 'User',
             color: 'indigo',
             items: [
-              { title: 'View User' },
-              { title: 'Add User' }
+              { title: 'Add User' },
+              { title: 'View User' }
               ]
           },
           {
