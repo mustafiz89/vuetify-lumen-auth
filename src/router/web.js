@@ -7,11 +7,38 @@ import ViewUser from '../components/user/ViewUser'
 
 Vue.use(Router)
 
-export default new Router({
+
+function isLogin(){
+  let token = localStorage.getItem('token')
+		if (token) {
+			return true
+		} else {
+			return false
+		}
+}
+
+const router =  new Router({
   routes: [
     { path: '/login', alias: '/', name: 'login', component: Login },
-    { path: '/dashboard', name: 'dashboard', component: Dashboard },
-    { path: '/user/add', name: 'add user', component: AddUser },
-    { path: '/user/view', name: 'view user', component: ViewUser }
+    { path: '/dashboard', name: 'dashboard', component: Dashboard, meta : { requiresAuth : true } },
+    { path: '/user/add', name: 'add user', component: AddUser, meta : { requiresAuth : true } },
+    { path: '/user/view', name: 'view user', component: ViewUser, meta : { requiresAuth : true } }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+	if(to.meta.requiresAuth) {
+		if(isLogin()) {
+			next()
+		} else {
+			next({
+				path : '/login'
+			})
+		}
+	} else {
+		next()
+	}
+})
+
+
+export default router;
