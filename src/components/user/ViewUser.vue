@@ -1,5 +1,9 @@
 <template>
-    <v-container fluid grid-list-md>
+    <v-app>
+      <navigation></navigation>
+      <toolbar></toolbar>
+      <v-content>          
+        <v-container fluid grid-list-md>
           <v-layout row wrap>
             <v-flex>
             <v-card>
@@ -12,14 +16,14 @@
               </v-card>              
             </v-flex>
           </v-layout>
-           <v-layout row wrap>
+          <v-layout row wrap>
             <v-flex xs12>
               <v-card>
                   <v-card-title primary-title>
                       <h3 class="">View User</h3>                      
                   </v-card-title>  
                   <v-card-text>
-                       <v-data-table
+                      <v-data-table
                             :headers="headers"
                             :items="desserts"
                             class="elevation-1"
@@ -40,10 +44,23 @@
             </v-flex>
           </v-layout>
         </v-container>
+      </v-content>
+      <bottom></bottom>
+    </v-app>
 </template>
 <script>
+
+import Navigation from '../layouts/Navigation'
+import Toolbar from '../layouts/Toolbar'
+import Footer from '../layouts/Footer'
+
 export default {
     name:'ViewUser',
+    components:{
+      navigation: Navigation,
+      toolbar: Toolbar,
+      bottom: Footer 
+    },
     data: () => ({
         bredcrums:[
             {
