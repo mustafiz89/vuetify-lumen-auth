@@ -51,14 +51,12 @@
 <script>
 
 import Navigation from '../layouts/Navigation'
-import Toolbar from '../layouts/Toolbar'
 import Footer from '../layouts/Footer'
 
 export default {
     name:'ViewUser',
     components:{
       navigation: Navigation,
-      toolbar: Toolbar,
       bottom: Footer 
     },
     data: () => ({

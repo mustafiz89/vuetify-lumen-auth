@@ -1,7 +1,6 @@
 <template>
     <v-app>
         <navigation></navigation>
-        <toolbar></toolbar>
         <v-content>
           <v-container fluid grid-list-md>
             <v-layout row wrap>
@@ -64,14 +63,12 @@
 <script>
 
 import Navigation from '../layouts/Navigation'
-import Toolbar from '../layouts/Toolbar'
 import Footer from '../layouts/Footer'
 
 export default {
     name:'adduser',
     components:{
         navigation: Navigation,
-        toolbar: Toolbar,
         bottom: Footer 
     },
     data: () => ({

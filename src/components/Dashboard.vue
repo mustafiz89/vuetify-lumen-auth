@@ -1,7 +1,6 @@
 <template>
     <v-app>
         <navigation></navigation>
-        <toolbar></toolbar>
          <v-content>
             <v-container fluid grid-list-md>
                 <v-layout row wrap>
@@ -115,19 +114,17 @@
 <script>
 
 import Navigation from './layouts/Navigation'
-import Toolbar from './layouts/Toolbar'
 import Footer from './layouts/Footer'
 
 export default {
     name:'dashboard',
     components:{
         navigation: Navigation,
-        toolbar: Toolbar,
         bottom: Footer 
     },
     data: ()=>({
         type: 'month',
-        start: new Date(),
+        start: new Date().toJSON().slice(0,10).replace(/-/g,'-'),
         end: '2019-01-06',
         typeOptions: [
             { text: 'Day', value: 'day' },

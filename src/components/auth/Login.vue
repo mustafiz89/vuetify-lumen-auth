@@ -13,11 +13,11 @@
                 </v-tooltip>
               </v-toolbar>
               <v-card-text>
-                <v-form>
-                  <v-text-field prepend-icon="person" name="email" label="Login" type="text" autocomplete="off"></v-text-field>
-                  <v-text-field prepend-icon="lock" name="password" label="Password" id="password" type="password" autocomplete="off"></v-text-field>
+                <v-form @submit.prevent="checkCredential" id="check-login">
+                  <v-text-field prepend-icon="person" v-model="authenticate.email" label="Email" type="text" autocomplete="off"></v-text-field>
+                  <v-text-field prepend-icon="lock" v-model="authenticate.password" label="Password" type="password" autocomplete="off"></v-text-field>
                 </v-form>
-                <v-btn color="primary" block>Login</v-btn>
+                <v-btn type="submit" color="primary" form="check-login" block :disabled="buttonSubmit">{{buttonText}}</v-btn>
               </v-card-text>
             </v-card>
           </v-flex>
@@ -31,8 +31,25 @@
 export default {
    name:'login',
    data:()=>({
+        buttonText    : 'Login',
+        error         : false,
+        buttonSubmit  : false,
+        authenticate:{
+            email     : '',
+            passwrod  : ''
+        }
+   }),
+   methods: {
+       checkCredential(){
+          this.buttonText   = 'Authenticating...'
+          this.buttonSubmit = true
+          let authenticate  = {
+              email     : this.authenticate.email,
+              password  : this.authenticate.password
+          }
 
-   }) 
+       }
+   } 
 }
 </script>
 <style scoped>
