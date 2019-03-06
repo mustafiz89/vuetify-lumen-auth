@@ -64,7 +64,6 @@ export default {
           }
           this.axios.post('/login', authenticate)
                     .then(response => {
-                      // console.log(response.data)
                       if(response.data.status == false){
                           this.authenticate.password  = ""            
                           this.notify.snackbar        = true
