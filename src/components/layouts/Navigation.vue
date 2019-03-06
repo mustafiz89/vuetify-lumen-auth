@@ -91,10 +91,10 @@ export default {
         ]
     }),
     methods:{
-        logout(){
-            localStorage.clear()				
-            this.$router.push({ path : '/login' })
-        }	
+      logout(){
+          localStorage.clear()				
+          this.$router.push({ path : '/login' })
+      }	
 	}
 }
 </script>
